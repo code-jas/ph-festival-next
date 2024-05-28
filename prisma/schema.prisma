@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model FestivalDetail {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  islandGroup     String
+  date            String
+  dateFormat      String
+  location        String
+  paragraph1      String
+  paragraph2      String
+  img             String
+  paragraph3      String
+  paragraph4      String
+  imgItem1        String
+  imgItem2        String
+  imgItem3        String
+  imgItem4        String
+  ytPath          String
+  ref             String
+  webSrc_img      String
+  webSrc_imgItem1 String
+  webSrc_imgItem2 String
+  webSrc_imgItem3 String
+  webSrc_imgItem4 String
+}
