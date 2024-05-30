@@ -5,6 +5,9 @@ const nextConfig = {
       config.resolve.modules.push(new URL('./src', import.meta.url).pathname);
       return config;
     },
+    images: {
+      domains: ['fontmeme.com'],
+    },
   };
   
   export default nextConfig;
