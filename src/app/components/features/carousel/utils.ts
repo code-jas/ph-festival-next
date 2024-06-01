@@ -51,6 +51,7 @@ export const swapCardsClass = (
     previousBgImageEl: HTMLElement,
     nextBgImageEl: HTMLElement
 ) => {
+    console.log('test');
     resetClasses([currentCardEl, previousCardEl, nextCardEl], ['current--card', 'previous--card', 'next--card']);
     resetClasses([currentBgImageEl, previousBgImageEl, nextBgImageEl], ['current--image', 'previous--image', 'next--image']);
 

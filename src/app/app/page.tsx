@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import Loading from '../components/common/Loading';
-import CarouselPage from '../components/features/carousel/CarouselPage';
+import CarouselFeature from '../components/features/carousel/CarouselFeature';
+import HeroFeature from '../components/features/hero/HeroFeature';
 
 export default function Home() {
     return (
       <div>
-        <CarouselPage />
+        <CarouselFeature />
+        <HeroFeature />
       </div>
     )
 }
