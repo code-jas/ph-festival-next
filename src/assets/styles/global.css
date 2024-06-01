@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;900&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600;1,700&display=swap');
+:root{
+   --light-gray: #f0f2f7;
+   --light-gray-alt: #e4e7ef;
+   --dark-gray: #a7a9b0;
+   --dark-gray-alt: #4f5362;
+   --dark-blue: #2a405b;
+   --dark-blue-alt: #222328;
+   --blue: #3b55e6;
+   --blue-alt: #6269CD;
+   --blue-alt-ctrl: #181e4b;
+   --yellow:#f3d351;
+   --yellow-alt: #ebc63b;
+   --orange: #fe5339;
+   --orange-alt: #f78b64;
+   --purple-light: #c8bdff;
+   --purple: #4e376b;
+   --purple-alt: #32214d;
+   --aqua : #51dae7;
+   --aqua-alt: #32cdda;
+   --green : #4be1ab;
+   --green-alt: #42d29e;
+   --bg-color: #f7f6f9;
+     --line-border-fill: #9c27b0;
+     --line-border-empty: #bdbdbd;
+ }
+
+* { 
+  box-sizing:  border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;  
+
+}
+
+
+.comp-cont-el { 
+  display: none;
+}
+
+.page-loader-animation { 
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #16191e;
+  position: absolute;
+}
+
+
+
+
+
+
+.page-loader-animation>div { 
+  height: 100px;
+  width: 100px;
+  border: 15px solid #45474b;
+  border-top-color: #2188e6;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 50%;
+  animation: spin 1.5s infinite linear;
+}
+
+
+@keyframes spin {
+  100% { 
+    transform: rotate(360deg);
+  }
+}
