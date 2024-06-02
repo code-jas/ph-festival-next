@@ -1,10 +1,9 @@
+import MaintenanceState from '@/app/components/common/MaintenanceState'
 import React from 'react'
 
 const Festival = () => {
   return (
-    <section id="about" className='about-main'>
-        
-    </section>
+        <MaintenanceState/>
   )
 }
 

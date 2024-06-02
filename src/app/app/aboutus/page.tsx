@@ -3,6 +3,7 @@ import { aboutUsData } from '@/app/components/features/aboutus/aboutUsData';
 import Image from 'next/image';
 import '@/assets/styles/aboutus.css'
 import TeamFeature from '@/app/components/features/aboutus/TeamFeature';
+import ContactFeature from '@/app/components/features/aboutus/ContactFeature';
 
 const AboutUs = () => {
     const { about, team, contact } = aboutUsData;
@@ -22,10 +23,8 @@ const AboutUs = () => {
                     />
                 </div>
             </div>
-
- 
-
             <TeamFeature team={team}/>
+            <ContactFeature contact={contact} />
         </div>
     );
 };

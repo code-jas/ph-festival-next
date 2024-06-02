@@ -328,11 +328,11 @@
 }
 
 .input-icon input[type="text"],
-.input-icon textarea[type="text"] {
+.input-icon textarea {
   padding-left: 50px;
 }
 
-.input-icon textarea[type="text"] {
+.input-icon textarea {
   padding-top: 13px;
 }
 
@@ -343,7 +343,7 @@
 .input-icon i {
   position: absolute;
   left: 1rem;
-  top: 1rem;
+  top: 1.1rem;
   font-size: 1.2rem;
   padding: 9px 8px;
   color: var(--bg-color);
@@ -411,7 +411,8 @@
 }
 
 .contact-description h3 {
-  padding-left: 1rem;
+  font-weight: 800;
+  padding-left: 3rem;
 }
 
 .contact-map h3,
@@ -422,6 +423,7 @@
 }
 
 .contact-map h3 {
+  font-weight: 800;
   text-align: center;
 }
 
@@ -504,7 +506,8 @@
   }
 
   .input-icon input[type="text"],
-  .input-icon textarea[type="text"] {
+  .input-icon textarea {
+    font-size: 14px;
     padding-left: 40px;
   }
 }
@@ -530,6 +533,8 @@
     min-height: 4200px;
   }
 
+  
+
   .work-section h1 {
     font-size: 7vw;
     margin: 3rem 0 7px 0;
@@ -543,6 +548,9 @@
 
   .work-section img {
     margin-top: 5rem;
+  }
+  .contact-us-section { 
+    height: 1300px;
   }
 
   .contact-us-container {
@@ -568,9 +576,12 @@
     align-items: center;
     width: 100%;
   }
+  .contact-detail { 
+    width: 100%;
+  }
 
   .input-icon {
-    width: 80%;
+    width: 100%;
   }
 
   .input-icon i {
@@ -591,7 +602,7 @@
     padding: 0px 15px;
   }
 
-  .input-icon textarea[type="text"] {
+  .input-icon textarea {
     padding-top: 5px;
   }
 
@@ -625,7 +636,7 @@
   }
 
   .team-cont {
-    gap: 9rem;
+    gap: 7rem;
   }
 
   .contact-us-container {
@@ -633,8 +644,9 @@
     margin: 0 auto;
   }
 
+
   .input-icon {
-    width: 90%;
+    width: 100%;
   }
 
   .contact-text-area {

@@ -35,12 +35,12 @@ const TeamFeature: React.FC<TeamFeatureProps> = ({ team }) => {
                                     <div key={key} className={`icon ${key}`}>
                                         <div className="tooltip">{capitalize(key)}</div>
                                         <span><CommonIcon name={key} size={18} /></span>
-                                        
                                     </div>
                                 ))}
                             </div>
                         </div>
-                    ))}
+                    ))
+                }
             </div>
         </div>
     );

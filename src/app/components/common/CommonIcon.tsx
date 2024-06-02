@@ -6,9 +6,10 @@ interface IconProps {
   name: string;
   size?: number;
   color?: string;
+  className?: string;
 }
 
-const CommonIcon: React.FC<IconProps> = ({ name, size = 24,  }) => {
+const CommonIcon: React.FC<IconProps> = ({ name, size = 24, color= 'currentColor', className = '' }) => {
   const IconComponent: IconType = icons[name];
 
   if (!IconComponent) {
@@ -16,7 +17,7 @@ const CommonIcon: React.FC<IconProps> = ({ name, size = 24,  }) => {
     return null; 
   }
 
-  return <IconComponent size={size}  color="currentColor" />;
+  return <IconComponent size={size}  color={color} className={className} />;
 };
 
 export default CommonIcon;

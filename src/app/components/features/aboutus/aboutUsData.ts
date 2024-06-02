@@ -22,25 +22,26 @@ export interface Team {
 }
 
 
-export interface ContactDetails {
-    visitUs: {
-        title: string;
-        content: string;
-        mapLink: string;
-        mapImage: string;
-    };
-    contactInfo: {
-        title: string;
-        email: string;
-        facebook: string;
-        phone: string;
-        address: string;
-    };
+export interface VisitUs {
+    title: string;
+    content: string;
+    mapLink: string;
+    mapImage: string;
+};
+export interface ContactDetails  {
+    label: string;
+    type: string;
+    value: string;
+    icon: string;
+};
+export interface ContactUsDetails {
+    visitUs: VisitUs
+    contactDetails: ContactDetails[]
 }
 export interface Contact  {
     title: string;
     subtitle: string;
-    details: ContactDetails
+    details: ContactUsDetails
 };
 
 export interface FooterQuickLinks {
@@ -161,15 +162,32 @@ export const aboutUsData: AboutUsData = {
                 mapLink: "https://mapcarta.com/W28395565",
                 mapImage: "/images/map.png"
             },
-            contactInfo: {
-                title: "Contact Information",
-                email: "phfestival2022@gmail.com",
-                facebook: "ph.festival2022",
-                phone: "0965-387-0742",
-                address: `Technological University of the Philippines
-                                        @ Ayala Blvd, Ermmita, Manila,
-                                        1000 Metro Manila`
-            }
+            contactDetails: [
+                {
+                  label: 'E-mail',
+                  type: 'text',
+                  value: 'phfestival2022@gmail.com',
+                  icon: 'envelope'
+                },
+                {
+                  label: 'Facebook',
+                  type: 'text',
+                  value: 'ph.festival2022',
+                  icon: 'facebook'
+                },
+                {
+                  label: 'Phone',
+                  type: 'text',
+                  value: '0965-387-0742',
+                  icon: 'phone'
+                },
+                {
+                  label: 'Address',
+                  type: 'textarea',
+                  value: `Technological University of the Philippines @ Ayala Blvd, Ermmita, Manila, 1000 Metro Manila`,
+                  icon: 'map'
+                }
+              ]
         }
     },
     footer: {
