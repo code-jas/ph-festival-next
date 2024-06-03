@@ -20,7 +20,7 @@ import { AppDispatch, RootState } from '@/app/store/store';
 import { nextCard, prevCard } from '@/app/store/cradSlide';
 import useIntersectionObserver from '@/app/hooks/useIntersectionObserver';
 // utils
-import { resetClasses, swapInfosClass, swapCardsClass } from './utils';
+import { resetClasses, swapInfosClass, swapCardsClass } from './carouselUtils';
 
 const CarouselFeature: React.FC = () => {
     const [isMuted, setIsMuted] = useState(true);
