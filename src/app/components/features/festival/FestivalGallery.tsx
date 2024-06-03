@@ -1,28 +1,36 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, ChangeEvent, LegacyRef } from 'react';
 import Image from 'next/image';
 
-const FestivalGallery = () => {
-  const [festivalContent, setFestivalContent] = useState([]);
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const [categories, setCategories] = useState(['all']);
-  const [filteredContent, setFilteredContent] = useState([]);
-  const [searchActive, setSearchActive] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
+interface FestivalItem {
+  id: number;
+  title: string;
+  img: string;
+  paragraph1: string;
+  islandGroup: string;
+}
 
-  const searchIconRef = useRef(null);
-  const searchFestRef = useRef(null);
-  const btnsRef = useRef([]);
-  const searchBarRef = useRef(null);
-  const searchEmptyElRef = useRef(null);
-  const displayInputSearchElRef = useRef(null);
+const FestivalGallery: React.FC = () => {
+  const [festivalContent, setFestivalContent] = useState<FestivalItem[]>([]);
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
+  const [categories, setCategories] = useState<string[]>(['all']);
+  const [filteredContent, setFilteredContent] = useState<FestivalItem[]>([]);
+  const [searchActive, setSearchActive] = useState<boolean>(false);
+  const [clickCount, setClickCount] = useState<number>(0);
+
+  const searchIconRef = useRef<HTMLDivElement>(null);
+  const searchFestRef = useRef<HTMLDivElement>(null);
+  const btnsRef = useRef<(HTMLButtonElement | null)[]>([]);
+  const searchBarRef = useRef<HTMLInputElement>(null);
+  const searchEmptyElRef = useRef<HTMLDivElement>(null);
+  const displayInputSearchElRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('/api/v1/festivalDetails');
-        const data = await response.json();
+        const data: FestivalItem[] = await response.json();
         setFestivalContent(data);
         setFilteredContent(data);
         setCategories(['all', ...new Set(data.map(item => item.islandGroup))]);
@@ -34,15 +42,15 @@ const FestivalGallery = () => {
     fetchData();
   }, []);
 
-  const sortByName = (data) => {
+  const sortByName = (data: FestivalItem[]) => {
     return data.sort((a, b) => a.title.localeCompare(b.title));
   };
 
-  const truncateWords = (str, numWords = 20) => {
+  const truncateWords = (str: string, numWords = 20) => {
     return str.split(' ').slice(0, numWords).join(' ') + '...';
   };
 
-  const displayFestivalItems = (festivalItems) => {
+  const displayFestivalItems = (festivalItems: FestivalItem[]) => {
     return festivalItems.map((item) => (
       <a key={item.id} href={`viewFestivalDetails.php?id=${item.id}`}>
         <div className="festival-card">
@@ -60,7 +68,7 @@ const FestivalGallery = () => {
     ));
   };
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = (category: string) => {
     if (category === 'all') {
       setFilteredContent(festivalContent);
     } else {
@@ -78,7 +86,7 @@ const FestivalGallery = () => {
     }
   };
 
-  const handleSearchInputChange = (e) => {
+  const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchString = e.target.value;
     setSearchKeyword(searchString);
 
@@ -105,6 +113,8 @@ const FestivalGallery = () => {
     setFilteredContent(festivalContent);
   };
 
+  
+
   const renderCategoryButtons = () => {
     return categories.map((category, index) => (
       <button
@@ -113,7 +123,7 @@ const FestivalGallery = () => {
         type="button"
         data-id={category}
         onClick={() => handleCategoryClick(category)}
-        ref={el => btnsRef.current[index] = el}
+        ref={btnsRef.current[index] as LegacyRef<HTMLButtonElement>}
       >
         {category}
       </button>
