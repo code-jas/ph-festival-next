@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState, useRef, ChangeEvent, LegacyRef } from 'react';
 import Image from 'next/image';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
+import Link from 'next/link';
 
 interface FestivalItem {
   id: number;
@@ -19,7 +21,7 @@ const FestivalGallery: React.FC = () => {
   const [searchActive, setSearchActive] = useState<boolean>(false);
   const [clickCount, setClickCount] = useState<number>(0);
 
-  const searchIconRef = useRef<HTMLDivElement>(null);
+  const searchIconRef = useRef<HTMLButtonElement>(null);
   const searchFestRef = useRef<HTMLDivElement>(null);
   const btnsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const searchBarRef = useRef<HTMLInputElement>(null);
@@ -52,7 +54,7 @@ const FestivalGallery: React.FC = () => {
 
   const displayFestivalItems = (festivalItems: FestivalItem[]) => {
     return festivalItems.map((item) => (
-      <a key={item.id} href={`viewFestivalDetails.php?id=${item.id}`}>
+      <Link key={item.id} href={{pathname:`/app/festival/${item.id}`}}>
         <div className="festival-card">
           <div className="img-box">
             <Image src={item.img} alt={item.title} width={300} height={378} style={{ objectFit: 'cover' }} />
@@ -64,7 +66,7 @@ const FestivalGallery: React.FC = () => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     ));
   };
 
@@ -106,8 +108,10 @@ const FestivalGallery: React.FC = () => {
   };
 
   const closeSearchInput = () => {
+    setSearchActive(!searchActive);
     setSearchKeyword('');
-    if (searchEmptyElRef.current) {
+    if (searchEmptyElRef.current && searchBarRef.current) {
+      searchBarRef.current.style.display = 'none';
       searchEmptyElRef.current.style.display = 'none';
     }
     setFilteredContent(festivalContent);
@@ -159,8 +163,12 @@ const FestivalGallery: React.FC = () => {
 
           <div className="gall-btn-cont">
             {renderCategoryButtons()}
+            {/* filtering search buttons */}
             <div className={`search-festival ${searchActive ? 'search-active' : ''}`} ref={searchFestRef}>
-              <i className="fas fa-search icon-font-awesome" onClick={handleSearchIconClick} ref={searchIconRef}></i>
+              <button onClick={handleSearchIconClick}  ref={searchIconRef} className='icon-font-awesome'>
+                  <FaMagnifyingGlass  />
+              </button>
+              {searchActive && (
               <div className="input-search">
                 <input
                   type="text"
@@ -171,6 +179,7 @@ const FestivalGallery: React.FC = () => {
                   ref={searchBarRef}
                 />
               </div>
+              )}
               <span className="clear" onClick={closeSearchInput}></span>
             </div>
           </div>

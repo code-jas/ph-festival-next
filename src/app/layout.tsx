@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
+      <body className={montserrat.className} style={{ backgroundColor: '#FFFFFF'}}>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
