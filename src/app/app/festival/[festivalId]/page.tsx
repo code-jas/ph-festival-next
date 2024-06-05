@@ -1,16 +1,33 @@
 import { getFestivalById } from '@/app/actions/getFestival';
-import React from 'react'
-interface Params { 
-    festivalId: string
+import ClientOnly from '@/app/components/common/ClientOnly';
+import React from 'react';
+import FestivalDetailsClient from './FestivalDetailsClient';
+
+interface Params {
+    festivalId: string;
 }
 
-const FestivalDetailsPage = async ({params}: {params:Params}) => {
-    const festivalDetails = await getFestivalById(params);
-    console.log('page festivalDetails :>> ', festivalDetails);
+interface FestivalDetailsPageProps {
+    params: Params;
+}
+
+const FestivalDetailsPage = async ({ params }: FestivalDetailsPageProps) => {
+    const festival = await getFestivalById(params);
+    console.log('festival :>> ', festival);
+
+    if (!festival || Object.keys(festival).length === 0) {
+        return (
+            <ClientOnly>
+                <div>Empty State Component</div>
+            </ClientOnly>
+        );
+    }
 
     return (
-        <div>FestivalDetailsPage</div>
-    )
-}
+        <ClientOnly>
+            <FestivalDetailsClient festival={festival} />
+        </ClientOnly>
+    );
+};
 
-export default FestivalDetailsPage
+export default FestivalDetailsPage;
