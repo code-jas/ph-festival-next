@@ -2,6 +2,7 @@ import { getFestivalById } from '@/app/actions/getFestival';
 import ClientOnly from '@/app/components/common/ClientOnly';
 import React from 'react';
 import FestivalDetailsClient from './FestivalDetailsClient';
+// import FestivalDetailsBackButton from '@/app/components/features/festival-details/FestivalDetailsBackButton';
 
 interface Params {
     festivalId: string;
@@ -25,6 +26,7 @@ const FestivalDetailsPage = async ({ params }: FestivalDetailsPageProps) => {
 
     return (
         <ClientOnly>
+            {/* <FestivalDetailsBackButton/> */}
             <FestivalDetailsClient festival={festival} />
         </ClientOnly>
     );
