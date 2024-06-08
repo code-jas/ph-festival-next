@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef, ChangeEvent, LegacyRef } from 'reac
 import Image from 'next/image';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import Link from 'next/link';
+import FestivalCardtem from './FestivalCardtem';
 
 interface FestivalItem {
   id: number;
@@ -48,27 +49,6 @@ const FestivalGallery: React.FC = () => {
     return data.sort((a, b) => a.title.localeCompare(b.title));
   };
 
-  const truncateWords = (str: string, numWords = 20) => {
-    return str.split(' ').slice(0, numWords).join(' ') + '...';
-  };
-
-  const displayFestivalItems = (festivalItems: FestivalItem[]) => {
-    return festivalItems.map((item) => (
-      <Link key={item.id} href={{pathname:`/app/festival/${item.id}`}}>
-        <div className="festival-card">
-          <div className="img-box">
-            <Image src={item.img} alt={item.title} width={300} height={378} style={{ objectFit: 'cover' }} />
-          </div>
-          <div className="fest-info">
-            <h3>{item.title}</h3>
-            <div className="short-desc">
-              <p>{truncateWords(item.paragraph1)}</p>
-            </div>
-          </div>
-        </div>
-      </Link>
-    ));
-  };
 
   const handleCategoryClick = (category: string) => {
     if (category === 'all') {
@@ -198,7 +178,16 @@ const FestivalGallery: React.FC = () => {
             </div>
           ) : (
             <main className="fest-gallery-main">
-              {displayFestivalItems(filteredContent)}
+              {/* {displayFestivalItems(filteredContent)} */}
+              {filteredContent.map((festival) => (
+                <FestivalCardtem
+                  key={festival.id}
+                  id={festival.id.toString()}
+                  img={festival.img}
+                  title={festival.title}
+                  description={festival.paragraph1}
+                />
+              ))}
             </main>
           )}
         </div>
