@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useRef, ChangeEvent, LegacyRef } from 'react';
 import Image from 'next/image';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
-import Link from 'next/link';
 import FestivalCardtem from './FestivalCardtem';
 
 interface FestivalItem {
