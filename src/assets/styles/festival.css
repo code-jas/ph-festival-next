@@ -122,6 +122,10 @@ h4 {
   margin-bottom: 0.75rem;
 }
 
+.js-cont { 
+  background-color: var(--bg-color);
+}
+
 @media screen and (min-width: 800px) {
   .global-fest h1 {
     font-size: 4rem;
@@ -144,7 +148,7 @@ h4 {
   }
 }
 .global-fest {
-  background-color: #ffffff;
+  background-color: var(--bg-color);
   padding: 5rem 0;
 }
 
@@ -237,6 +241,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .search-festival .icon-font-awesome {
@@ -351,7 +356,6 @@ h4 {
   justify-content: center;
   flex-wrap: wrap;
   max-width: 1400px;
-
   margin: 0 auto;
 }
 .m-font-size {

@@ -30,13 +30,25 @@ const Navbar: React.FC = () => {
 
     useEffect(() => {
         if (headerRef.current) {
-            if (path !== '/app') {
+            if (path !== '') {
                 headerRef.current.classList.add('sticky');
             } else {
                 headerRef.current.classList.remove('sticky');
             }
         }
+        // Scroll to the top of the page on path change
+        window.scrollTo(0, 0);
     }, [path]);
+
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, targetPath: string) => {
+        if (path === targetPath) {
+            e.preventDefault();
+            window.scrollTo(0, 0);
+            setIsMenuOpen(false);
+        } else {
+            toggleMenu();
+        }
+    };
 
     const toggleMenu = () => setIsMenuOpen((prevState) => !prevState);
 
@@ -56,17 +68,17 @@ const Navbar: React.FC = () => {
                 <div className={`nav-menu ${isMenuOpen ? 'navbar-active' : ''}`}>
                     <ul className="sub-nav-menu">
                         <li className="nav-item">
-                            <Link href="/app/" target='_self' accessKey="1" tabIndex={1} className="nav-link" onClick={toggleMenu}>
+                            <Link href="/" className="nav-link" onClick={toggleMenu}>
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link href="/app/festival"  target='_self' accessKey="2" tabIndex={2} className="nav-link" onClick={toggleMenu}>
+                            <Link href="/festival" className="nav-link" onClick={toggleMenu}>
                                 Festival
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link href="/app/aboutus" target='_self' accessKey="3" tabIndex={3} className="nav-link" onClick={toggleMenu}>
+                            <Link href="/aboutus" className="nav-link" onClick={(e) => handleLinkClick(e, '/aboutus')}>
                                 About Us
                             </Link>
                         </li>

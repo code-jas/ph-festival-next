@@ -1,5 +1,6 @@
 
 export interface FestivalDetailsType {
+   id: number;
    title: string;
    islandGroup: string;
    date: string;
