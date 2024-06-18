@@ -1,45 +1,67 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { FestivalDetailsType } from '../typings/festival-detail-type';
 import FestivalGallery from '@/app/components/features/festival/FestivalGallery';
 import FestivalTimeline from '@/app/components/features/festival/FestivalTimeline';
 import ViewButtons from '@/app/components/features/festival/ViewButtons';
+import BackToTopButton from '../components/common/BackToTopButton';
+
 import '@/assets/styles/festival.css';
 import '@/assets/styles/backtotop.css';
-import { FaAngleUp } from 'react-icons/fa6';
-import { FestivalDetailsType } from '../typings/festival-detail-type';
 
 interface FestivalClientProps {
-    festivals: FestivalDetailsType[];
+   festivals: FestivalDetailsType[];
 }
 
 const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
-    const [view, setView] = useState('gallery'); // Initial view is set to 'gallery'
+   const router = useRouter();
+   const searchParams = useSearchParams();
+   const [view, setView] = useState('gallery'); // Default view
 
-    const toggleView = (view: string) => {
-        setView(view);
-    };
+   useEffect(() => {
+      const viewParam = searchParams.get('t');
+      if (!viewParam) {
+         router.replace(`/festival?t=${view}`);
+      } else {
+         setView(viewParam);
+      }
+   }, []);
 
-    return (
-        <>
-            <button id="back-to-top-btn"><FaAngleUp /></button>
-            <ViewButtons toggleView={toggleView} />
-            <div className="js-cont">
-                <div className="js-scroll">
-                    <div className="global-fest">
-                        <div className="gall-title">
-                            <h1>Festival {view == 'gallery' ? 'Gallery' : 'Timeline'}</h1>
-                            <div className="underline"></div>
-                        </div>
-                        {view === 'gallery' ?
-                            <FestivalGallery festivals={festivals} /> :
-                            <FestivalTimeline festivals={festivals} />
-                        }
+   useEffect(() => {
+      const viewParam = searchParams.get('t');
+      if (viewParam) {
+         setView(viewParam);
+      }
+   }, [searchParams]);
 
-                    </div>
-                </div>
+   const toggleView = (view: string) => {
+      setView(view);
+      router.push(`/festival?t=${view}`);
+   };
+
+   return (
+      <>
+         <BackToTopButton />
+         <ViewButtons view={view} toggleView={toggleView} />
+         <div className="js-cont">
+            <div className="js-scroll">
+               <div className="global-fest bg-color-el">
+                  <div className="gall-title">
+                     <h1>Festival {view === 'gallery' ? 'Gallery' : 'Timeline'}</h1>
+                     <div className="underline"></div>
+                  </div>
+                  {view === 'gallery' ? (
+                     <FestivalGallery festivals={festivals} />
+                  ) : (
+                     <FestivalTimeline festivals={festivals} />
+                  )}
+               </div>
             </div>
-        </>
-    );
+         </div>
+      </>
+   );
 };
 
 export default FestivalsClient;

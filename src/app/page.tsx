@@ -2,10 +2,10 @@ import CarouselFeature from './components/features/carousel/CarouselFeature';
 import HeroFeature from './components/features/hero/HeroFeature';
 
 export default function Home() {
-    return (
+   return (
       <div>
-        <CarouselFeature />
-        <HeroFeature />
+         <CarouselFeature />
+         <HeroFeature />
       </div>
-    )
+   );
 }

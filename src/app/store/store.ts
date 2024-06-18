@@ -1,11 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import cardReducer from './cradSlide';
+import { configureStore } from '@reduxjs/toolkit';
+import cardReducer from './cardSlide';
 
 export const store = configureStore({
-    reducer: { 
-        card: cardReducer,
-    }
-})
+   reducer: {
+      card: cardReducer,
+   },
+});
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
