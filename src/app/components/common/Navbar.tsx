@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
    useEffect(() => {
       const handleScroll = () => {
          if (headerRef.current) {
-            headerRef.current.classList.toggle('sticky', window.scrollY > 500);
+            if (path == '/') headerRef.current.classList.toggle('sticky', window.scrollY > 500);
          }
       };
 
@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
       return () => {
          window.removeEventListener('scroll', handleScroll);
       };
-   }, []);
+   }, [path]);
 
    useEffect(() => {
       document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
 
    useEffect(() => {
       if (headerRef.current) {
-         if (path !== '') {
+         if (path !== '/') {
             headerRef.current.classList.add('sticky');
          } else {
             headerRef.current.classList.remove('sticky');
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
    return (
       <header ref={headerRef}>
          <nav className="navbar">
-            <a href="index.html" className="nav-branding">
+            <Link href="/" className="nav-branding">
                <Image
                   className="img-branding"
                   src="/images/logo/Festival Ph - Logo 96x96.png"
@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
                   width={158.48}
                   height={30}
                />
-            </a>
+            </Link>
             <div className={`nav-menu ${isMenuOpen ? 'navbar-active' : ''}`}>
                <ul className="sub-nav-menu">
                   <li className="nav-item">
@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
                      </Link>
                   </li>
                   <li className="nav-item">
-                     <Link href="/festival" className="nav-link" onClick={toggleMenu}>
+                     <Link href="/festival?t=gallery" className="nav-link" onClick={toggleMenu}>
                         Festival
                      </Link>
                   </li>

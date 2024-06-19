@@ -6,6 +6,17 @@
    padding: 0;
 }
 
+.comp-cont-el {
+   display: none;
+   opacity: 0;
+   transition: opacity 500ms ease-in-out;
+}
+
+.comp-cont-el.fade-in {
+   display: block;
+   opacity: 1;
+}
+
 .loading__wrapper {
    position: absolute;
    left: 50%;
@@ -17,7 +28,18 @@
    border: none;
    user-select: none;
    -webkit-user-select: none;
+   opacity: 1;
+   transition: opacity 300mss ease-in-out;
 }
+
+.loading__wrapper.fade-out {
+   opacity: 0;
+   visibility: hidden;
+   transition:
+      opacity 300ms ease-in-out,
+      visibility 0.5s ease-in-out;
+}
+
 .dark {
    background-color: #222328;
 }

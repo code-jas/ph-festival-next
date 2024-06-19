@@ -20,8 +20,7 @@ import { AppDispatch, RootState } from '@/app/store/store';
 import { nextCard, prevCard } from '@/app/store/cardSlide';
 import useIntersectionObserver from '@/app/hooks/useIntersectionObserver';
 // utils
-// eslint-disable-next-line import/no-cycle
-import { resetClasses, swapInfosClass, swapCardsClass } from './carouselUtils';
+import { swapInfosClass, swapCardsClass } from './carouselUtils';
 
 const CarouselFeature: React.FC = () => {
    const [isMuted, setIsMuted] = useState(true);
@@ -254,7 +253,7 @@ const CarouselFeature: React.FC = () => {
             nextBgImageEl,
          );
       },
-      [refs.appBgContainer, refs.cardsContainer],
+      [changeInfo, refs.appBgContainer, refs.cardsContainer],
    );
 
    return (

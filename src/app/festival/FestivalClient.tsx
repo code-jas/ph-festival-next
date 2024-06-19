@@ -10,6 +10,7 @@ import BackToTopButton from '../components/common/BackToTopButton';
 
 import '@/assets/styles/festival.css';
 import '@/assets/styles/backtotop.css';
+import { FestivalDetail } from '@prisma/client';
 
 interface FestivalClientProps {
    festivals: FestivalDetailsType[];
@@ -23,11 +24,12 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
    useEffect(() => {
       const viewParam = searchParams.get('t');
       if (!viewParam) {
-         router.replace(`/festival?t=${view}`);
+         router.push(`/festival?t=${view}`);
       } else {
          setView(viewParam);
       }
-   }, []);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [router, searchParams]);
 
    useEffect(() => {
       const viewParam = searchParams.get('t');
@@ -41,6 +43,11 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
       router.push(`/festival?t=${view}`);
    };
 
+   const categories = [
+      'all',
+      ...new Set(festivals.map((item: FestivalDetail) => item.islandGroup)),
+   ];
+
    return (
       <>
          <BackToTopButton />
@@ -53,7 +60,7 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
                      <div className="underline"></div>
                   </div>
                   {view === 'gallery' ? (
-                     <FestivalGallery festivals={festivals} />
+                     <FestivalGallery festivals={festivals} categories={categories} />
                   ) : (
                      <FestivalTimeline festivals={festivals} />
                   )}

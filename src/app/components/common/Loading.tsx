@@ -3,23 +3,19 @@
 import React, { useEffect } from 'react';
 import '@/assets/styles/loading.css';
 
-const Loading: React.FC = () => {
+interface LoadingProps {
+   isLoading: boolean;
+}
+
+const Loading: React.FC<LoadingProps> = ({ isLoading }) => {
    useEffect(() => {
-      const handleLoad = () => {
-         const loadingWrapper: HTMLElement | null = document.querySelector('.loading__wrapper');
-         if (loadingWrapper) {
-            loadingWrapper.style.display = 'none';
+      const loadingWrapper: HTMLElement | null = document.querySelector('.loading__wrapper');
+      if (loadingWrapper) {
+         if (!isLoading) {
+            loadingWrapper.classList.add('fade-out');
          }
-         const compContEl: HTMLElement | null = document.querySelector('.comp-cont-el');
-         if (compContEl) {
-            compContEl.style.display = 'block';
-         }
-      };
-      window.addEventListener('load', handleLoad);
-      return () => {
-         window.removeEventListener('load', handleLoad);
-      };
-   }, []);
+      }
+   }, [isLoading]);
 
    return (
       <div className="loading__wrapper">
@@ -29,7 +25,7 @@ const Loading: React.FC = () => {
             <div className="box three"></div>
             <div className="box four"></div>
             <div className="box five"></div>
-            <div className="boxSsix"></div>
+            <div className="box six"></div>
          </div>
       </div>
    );
