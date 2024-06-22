@@ -28,7 +28,7 @@ const FestivalDetailsContent: React.FC<FestivalContentProps> = ({
             </React.Fragment>
          ))}
          <div className="image" style={{ position: 'relative', width: '100%' }}>
-            <Image src={img} alt={title} layout="fill" objectFit="cover" />
+            <Image src={img} alt={title} fill sizes="100" style={{ objectFit: 'cover' }} />
          </div>
          <h3>{title} Activities</h3>
          <div className="container">

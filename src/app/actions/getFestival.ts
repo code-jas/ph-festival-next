@@ -7,13 +7,13 @@ interface Params {
 const getFestivalById = async (params: Params) => {
    try {
       const { festivalId } = params;
-      const response = await fetch(`http://localhost:3000/api/v1/festivalDetails/${festivalId}`);
+      console.log('festivalId  ay :>> ', festivalId);
 
-      if (!response.ok) {
+      const festival = await prisma.festivalDetail.findFirst({ where: { id: festivalId } });
+      if (!festival) {
          throw new Error('Error fetching festival details');
       }
 
-      const festival = await response.json();
       return festival;
    } catch (error: any) {
       throw new Error(`Error fetching festival details: ${error.message}`);
