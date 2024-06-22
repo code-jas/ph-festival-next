@@ -5,12 +5,12 @@ import { parametersHelper } from '../../libs/parametersHelper';
 const prisma = new PrismaClient();
 
 export async function GET(request: Request) {
-   try {
-      const { searchParams } = new URL(request.url);
-      console.log('searchParams :>> ', searchParams);
-      const params = parametersHelper(searchParams);
-      console.log('params :>> ', params);
+   const { searchParams } = new URL(request.url);
+   console.log('searchParams :>> ', searchParams);
+   const params = parametersHelper(searchParams);
+   console.log('params :>> ', params);
 
+   try {
       const festivalDetails = await prisma.festivalDetail.findMany(params);
 
       return NextResponse.json(festivalDetails);

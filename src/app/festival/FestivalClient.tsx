@@ -22,7 +22,7 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
    const [view, setView] = useState('gallery'); // Default view
 
    useEffect(() => {
-      const viewParam = searchParams.get('t');
+      const viewParam = searchParams?.get('t');
       if (!viewParam) {
          router.push(`/festival?t=${view}`);
       } else {
@@ -32,7 +32,7 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
    }, [router, searchParams]);
 
    useEffect(() => {
-      const viewParam = searchParams.get('t');
+      const viewParam = searchParams?.get('t');
       if (viewParam) {
          setView(viewParam);
       }

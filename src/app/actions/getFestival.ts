@@ -4,14 +4,17 @@ interface Params {
    festivalId: string;
 }
 
-const getFestivalById = async (params: Params) => {
+const getFestivalById = async ({ festivalId }: Params) => {
    try {
-      const { festivalId } = params;
-      console.log('festivalId  ay :>> ', festivalId);
+      if (!festivalId) {
+         throw new Error('Festival ID is required');
+      }
 
-      const festival = await prisma.festivalDetail.findFirst({ where: { id: festivalId } });
+      const festival = await prisma.festivalDetail.findFirst({
+         where: { id: festivalId },
+      });
       if (!festival) {
-         throw new Error('Error fetching festival details');
+         throw new Error('Festival not found');
       }
 
       return festival;
