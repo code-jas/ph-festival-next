@@ -3,16 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { FestivalDetailsType } from '@/app/typings/festival-detail-type';
-import { getMonthInWord, truncateWords } from './festivalUtils';
+import { truncateWords } from './festivalUtils';
 
 interface FestivalTimelineItemProps {
    item: FestivalDetailsType;
 }
 
 const FestivalTimelineItem: React.FC<FestivalTimelineItemProps> = ({ item }) => {
-   const date = new Date(item.dateFormat);
-   const month = getMonthInWord(date.getMonth());
-
    return (
       <li className="fest-tl-list">
          <h3 className="fest-tl-hd1">{item.title}</h3>

@@ -13,9 +13,9 @@ const ImageActivites: React.FC<ImageActivitesProps> = ({ imageUrl }) => {
             <Image
                src={imageUrl}
                alt={imageUrl}
-               layout="fill"
-               objectFit="cover"
-               style={{ transition: '0.5' }}
+               fill
+               sizes="100"
+               style={{ transition: '0.5', objectFit: 'cover' }}
             />
          </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaCodeMerge, FaImages } from 'react-icons/fa6';
+import { FaCodeMerge } from 'react-icons/fa6';
+import { RxDashboard } from 'react-icons/rx';
 
 interface ViewButtonsProps {
    view: string;
@@ -15,7 +16,7 @@ const ViewButtons = ({ view, toggleView }: ViewButtonsProps) => {
          >
             <div className="tooltip-timeline">Gallery View</div>
             <span>
-               <FaImages />
+               <RxDashboard />
             </span>
          </div>
          <div

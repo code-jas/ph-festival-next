@@ -18,7 +18,13 @@ const FestivalCardtem: React.FC<FestivalCardItemProps> = ({ id, img, title, desc
       <Link href={{ pathname: `/festival/${id}` }}>
          <div className="festival-card">
             <div className="img-box">
-               <Image src={img} alt={title} width={300} height={378} objectFit="cover" />
+               <Image
+                  src={img}
+                  alt={title}
+                  width={300}
+                  height={378}
+                  style={{ objectFit: 'cover' }}
+               />
             </div>
             <div className="fest-info">
                <h3>{title}</h3>

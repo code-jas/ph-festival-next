@@ -3,6 +3,17 @@ export const sortByName = (data: any) => {
    return data.sort((a: any, b: any) => a.name.localeCompare(b.name));
 };
 
+export const filterFestivalsByCategory = (festivals: FestivalDetailsType[], category: string) => {
+   if (category === 'all') return festivals;
+   return festivals.filter((item) => item.islandGroup === category);
+};
+
+export const filterFestivalsBySearch = (festivals: FestivalDetailsType[], searchString: string) => {
+   return festivals.filter((festival) =>
+      festival.title.toLowerCase().includes(searchString.toLowerCase()),
+   );
+};
+
 // TIMELINE
 // utils/festivalUtils.ts
 
