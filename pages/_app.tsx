@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 import Loading from '../src/app/festival/loading';
+import ReduxProvider from '@/app/provider/ReduxProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
    const router = useRouter();
@@ -25,8 +26,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 
    return (
       <>
-         {loading && <Loading />}
-         <Component {...pageProps} />
+         <ReduxProvider>
+            {loading && <Loading />}
+            <Component {...pageProps} />
+         </ReduxProvider>
       </>
    );
 }
