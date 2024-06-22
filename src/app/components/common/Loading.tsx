@@ -1,31 +1,29 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import '@/assets/styles/loading.css';
 
-interface LoadingProps {
-   isLoading: boolean;
-}
-
-const Loading: React.FC<LoadingProps> = ({ isLoading }) => {
-   useEffect(() => {
-      const loadingWrapper: HTMLElement | null = document.querySelector('.loading__wrapper');
-      if (loadingWrapper) {
-         if (!isLoading) {
-            loadingWrapper.classList.add('fade-out');
-         }
-      }
-   }, [isLoading]);
-
+const Loading: React.FC = () => {
    return (
-      <div className="loading__wrapper">
-         <div className="box-wrap">
-            <div className="box one"></div>
-            <div className="box two"></div>
-            <div className="box three"></div>
-            <div className="box four"></div>
-            <div className="box five"></div>
-            <div className="box six"></div>
+      <div>
+         <div className="loading__wrapper">
+            <div className="box-wrap">
+               <div className="box one"></div>
+               <div className="box two"></div>
+               <div className="box three"></div>
+               <div className="box four"></div>
+               <div className="box five"></div>
+               <div className="box six"></div>
+            </div>
+         </div>
+         <div className="loading loading03">
+            <span>L</span>
+            <span>o</span>
+            <span>a</span>
+            <span>d</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
          </div>
       </div>
    );
