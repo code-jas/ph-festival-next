@@ -348,7 +348,7 @@ h4 {
 
 .fest-gallery-main {
    display: flex;
-   justify-content: center;
+   justify-content: start;
    flex-wrap: wrap;
    max-width: 1400px;
    margin: 0 auto;

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
-import Loading from '../src/app/festival/loading';
+import Loading from '@/app/components/common/Loading';
 // import ReduxProvider from '@/app/provider/ReduxProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {

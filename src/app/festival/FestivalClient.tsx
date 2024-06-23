@@ -11,6 +11,7 @@ import BackToTopButton from '../components/common/BackToTopButton';
 import '@/assets/styles/festival.css';
 import '@/assets/styles/backtotop.css';
 import { FestivalDetail } from '@prisma/client';
+import LoadingSkeletonCard from '../components/common/SkeletonLoading';
 
 interface FestivalClientProps {
    festivals: FestivalDetailsType[];
@@ -20,6 +21,7 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
    const router = useRouter();
    const searchParams = useSearchParams();
    const [view, setView] = useState('gallery'); // Default view
+   const [loading, setLoading] = useState(false);
 
    useEffect(() => {
       const viewParam = searchParams?.get('t');
@@ -39,8 +41,11 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
    }, [searchParams]);
 
    const toggleView = (view: string) => {
+      setLoading(true);
       setView(view);
       router.push(`/festival?t=${view}`);
+      // Simulate loading time
+      setTimeout(() => setLoading(false), 1000); // Adjust timeout as necessary
    };
 
    const categories = [
@@ -59,7 +64,9 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
                      <h1>Festival {view === 'gallery' ? 'Gallery' : 'Timeline'}</h1>
                      <div className="underline"></div>
                   </div>
-                  {view === 'gallery' ? (
+                  {loading ? (
+                     <LoadingSkeletonCard size={8} />
+                  ) : view === 'gallery' ? (
                      <FestivalGallery festivals={festivals} categories={categories} />
                   ) : (
                      <FestivalTimeline festivals={festivals} />
