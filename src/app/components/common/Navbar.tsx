@@ -38,6 +38,9 @@ const Navbar: React.FC = () => {
       }
       // Scroll to the top of the page on path change
       window.scrollTo(0, 0);
+      // Reset menu state on path change
+      setIsMenuOpen(false);
+      console.log('Path changed, menu closed');
    }, [path]);
 
    const handleLinkClick = (
@@ -49,11 +52,17 @@ const Navbar: React.FC = () => {
          window.scrollTo(0, 0);
          setIsMenuOpen(false);
       } else {
-         toggleMenu();
+         setIsMenuOpen(false);
+         // toggleMenu();
       }
    };
 
-   const toggleMenu = () => setIsMenuOpen((prevState) => !prevState);
+   const toggleMenu = () => {
+      setIsMenuOpen((prevState) => {
+         console.log('Toggling menu, previous state:', prevState);
+         return !prevState;
+      });
+   };
 
    return (
       <header ref={headerRef}>
@@ -77,12 +86,16 @@ const Navbar: React.FC = () => {
             <div className={`nav-menu ${isMenuOpen ? 'navbar-active' : ''}`}>
                <ul className="sub-nav-menu">
                   <li className="nav-item">
-                     <Link href="/" className="nav-link" onClick={toggleMenu}>
+                     <Link href="/" className="nav-link" onClick={(e) => handleLinkClick(e, '/')}>
                         Home
                      </Link>
                   </li>
                   <li className="nav-item">
-                     <Link href="/festival?t=gallery" className="nav-link" onClick={toggleMenu}>
+                     <Link
+                        href="/festival?t=gallery"
+                        className="nav-link"
+                        onClick={(e) => handleLinkClick(e, '/festival')}
+                     >
                         Festival
                      </Link>
                   </li>

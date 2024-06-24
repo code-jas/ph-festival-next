@@ -11,7 +11,8 @@ import BackToTopButton from '../components/common/BackToTopButton';
 import '@/assets/styles/festival.css';
 import '@/assets/styles/backtotop.css';
 import { FestivalDetail } from '@prisma/client';
-import LoadingSkeletonCard from '../components/common/SkeletonLoading';
+import SkeletonLoadingTimeline from '../components/common/SkeletonLoadingTimeline';
+import SkeletonLoadingCard from '../components/common/SkeletonLoadingCard';
 
 interface FestivalClientProps {
    festivals: FestivalDetailsType[];
@@ -64,8 +65,10 @@ const FestivalsClient: React.FC<FestivalClientProps> = ({ festivals }) => {
                      <h1>Festival {view === 'gallery' ? 'Gallery' : 'Timeline'}</h1>
                      <div className="underline"></div>
                   </div>
-                  {loading ? (
-                     <LoadingSkeletonCard size={8} />
+                  {loading && view === 'gallery' ? (
+                     <SkeletonLoadingCard size={8} />
+                  ) : loading && view === 'timeline' ? (
+                     <SkeletonLoadingTimeline size={10} />
                   ) : view === 'gallery' ? (
                      <FestivalGallery festivals={festivals} categories={categories} />
                   ) : (

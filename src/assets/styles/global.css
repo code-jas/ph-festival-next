@@ -34,12 +34,13 @@
 }
 html {
    scroll-behavior: smooth;
+   overflow-y: auto;
 }
-
+/* 
 .comp-cont-el {
    display: none;
-}
-
+} */
+/* 
 .page-loader-animation {
    height: 100vh;
    width: 100vw;
@@ -67,4 +68,4 @@ html {
    100% {
       transform: rotate(360deg);
    }
-}
+} */

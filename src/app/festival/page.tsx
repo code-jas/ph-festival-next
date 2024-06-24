@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { getFestivals } from '../actions/getFestival';
 import FestivalsClient from './FestivalClient';
-import LoadingSkeletonCard from '../components/common/SkeletonLoading';
+import LoadingSkeletonCard from '../components/common/SkeletonLoadingCard';
 
 const FestivalPage = async () => {
    const festivals = await getFestivals();

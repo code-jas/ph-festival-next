@@ -19,15 +19,17 @@ const FestivalTimeline: React.FC<FestivalClientProps> = ({ festivals }) => {
    }, [festivals]);
 
    return (
-      <div className="main-tl">
-         <div className="fest-tl-cont">
-            <ul id="fest-tl-lms">
-               {sortedFestivals.map((item, index) => (
-                  <FestivalTimelineItem key={index} item={item} />
-               ))}
-            </ul>
+      <>
+         <div className="main-tl">
+            <div className="fest-tl-cont">
+               <ul id="fest-tl-lms">
+                  {sortedFestivals.map((item, index) => (
+                     <FestivalTimelineItem key={index} item={item} />
+                  ))}
+               </ul>
+            </div>
          </div>
-      </div>
+      </>
    );
 };
 
