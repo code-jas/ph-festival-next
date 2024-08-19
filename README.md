@@ -118,6 +118,6 @@ Distributed under the MIT License. See [MIT License](https://opensource.org/lice
 
 ## Contact
 
-Your Name - johnangelo.silvestre04@gmail.com
+Email: johnangelo.silvestre04@gmail.com
 
 Project Link: [https://github.com/code-jas/ph-festival-next](https://github.com/code-jas/ph-festival-next)
